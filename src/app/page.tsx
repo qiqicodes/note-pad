@@ -1,3 +1,4 @@
+"use client"
 import {
   Box,
   Button,
@@ -6,9 +7,15 @@ import {
   Heading,
   Stack,
   Text,
+  Textarea,
 } from "@chakra-ui/react";
+import React from "react";
 
 export default function Page() {
+  let [value, setValue]= React.useState("")
+  let handleInputClick = (event: React.ChangeEvent<HTMLTextAreaElement>) =>{
+    setValue(event.target.value)
+  }
   return (
     <ChakraProvider>
       <Container maxW="2xl" centerContent height="xl">
@@ -26,8 +33,8 @@ export default function Page() {
           width="100%"
           height="100%"
         >
-          <Text>Type Here</Text>
-          <Stack direction="row" spacing={4}>
+          <Stack direction="column" spacing={4}>
+          <Textarea height="md" placeholder="Click Clack... Click Clack... Just Type Away =]" size="md" onChange={handleInputClick}/>
             <Button
               isLoading
               loadingText="Submitting"
